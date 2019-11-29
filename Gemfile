@@ -10,7 +10,7 @@ gem 'rails', '~> 5.2.3'
 # Digest hash
 gem 'bcrypt', '3.1.12'
 # Faker populates databases
-gem 'faker', '1.7.3'
+gem 'faker', git: 'https://github.com/stympy/faker'
 # To create pages for multiple records
 gem 'will_paginate', '3.1.7'
 

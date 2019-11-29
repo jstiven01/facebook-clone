@@ -1,0 +1,19 @@
+<header>
+  <div>
+    <%= link_to "Facebook clone", root_path , id: "logo" %>
+  </div>
+  <nav>
+    <ul>
+        <% if user_signed_in? %>
+          <ul>
+            <li>
+              <%= link_to "My Profile", user_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+      <% end %>
+    </ul>
+  </nav>
+</header>

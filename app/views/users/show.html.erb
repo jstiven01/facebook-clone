@@ -1,2 +1,10 @@
 <h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div>
+<%= @user.first_name%>
+<%= @user.last_name%>
+<%= @user.email%>
+<%= gravatar_for @user %>
+</div>
+<ol class="posts">
+  <%= render @posts %>
+</ol>
