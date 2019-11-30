@@ -8,9 +8,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @new_post = current_user.posts.build(posts_params)
-    @new_post.date_post = Time.zone.now
-    if @new_post.save
+    @post = current_user.posts.build(posts_params)
+    @post.date_post = Time.zone.now
+    if @post.save
       flash[:success] = 'Post created successfully.'
       redirect_to root_path
     else
@@ -19,11 +19,28 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @post = Post.find(params[:id])
+  end
 
-  def update; end
+  def update
+    @post = Post.find(params[:id])
+    # @post.content = posts_params[:content]
+    # @post.date_post = Time.zone.now
+    if @post.update(content: posts_params[:content], date_post: Time.zone.now)
+      flash[:success] = 'Post was successfully updated.'
+      redirect_to current_user
+    else
+      render :edit
+    end
+  end
 
-  def destroy; end
+  def destroy
+    @post = Post.find(params[:id])
+    @post.delete
+    flash[:success] = 'Post deleted successfully'
+    redirect_to current_user
+  end
 
   private
 

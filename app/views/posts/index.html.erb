@@ -1,16 +1,7 @@
 <h1>Posts#index</h1>
 
-<%= form_for(@post, url: posts_path) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, cols: 20, rows: 20, autofocus: true, placeholder: "What are you thinking?", required: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Publish" %>
-  </div>
+<%= form_for(@post, url: posts_path) do |form| %>
+<%= render partial: 'post_form', locals: { f: form } %>
 <% end %>
 
 <ol class="posts">
