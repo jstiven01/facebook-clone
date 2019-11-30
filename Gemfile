@@ -13,6 +13,10 @@ gem 'bcrypt', '3.1.12'
 gem 'faker', git: 'https://github.com/stympy/faker'
 # To create pages for multiple records
 gem 'will_paginate', '3.1.7'
+# Bootstrap
+gem 'bootstrap', '~> 4.3.1'
+gem 'font-awesome-rails'
+gem 'jquery-rails'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'

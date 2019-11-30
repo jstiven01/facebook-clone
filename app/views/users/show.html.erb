@@ -1,10 +1,15 @@
-<h1>Users#show</h1>
-<div>
-<%= @user.first_name%>
-<%= @user.last_name%>
-<%= @user.email%>
-<%= gravatar_for @user %>
+<div class="row">
+  <div class="col-12 d-flex profile">
+    <div class="profile-image">
+      <%= gravatar_for @user, size:200 %>
+    </div>
+    <div class="personal-info">
+      <p><%= @user.first_name%></p>
+      <p><%= @user.last_name%></p>
+      <p><%= @user.email%></p>
+    </div>
+  </div>
+  <ul class="col-12 posts">
+    <%= render @posts %>
+  </ul>
 </div>
-<ol class="posts">
-  <%= render @posts %>
-</ol>
