@@ -33,20 +33,16 @@ RSpec.describe 'Interface Posts', type: :feature do
       expect(page).to have_content(@post3.content)
     end
 
-    #scenario "index post with the User's posts and friend's posts" do
+    # scenario "index post with the User's posts and friend's posts" do
     #  expect(page).to have_content('Error')
-    #end
+    # end
 
     scenario 'editing posts' do
-      #within "#post-#{@post1.id}" do
-      #  first(:link, "Edit Post").click
-      #end
-      first("#post-#{@post1.id}").click_link('Edit Post')
-      expect(page).to have_content("edit")
-    end
-
-    scenario 'deleting posts' do
-      expect(page).to have_content('Error')
+      click_link 'My Profile'
+      within "#post-#{@post1.id}" do
+        click_link 'Edit Post'
+      end
+      expect(page).to have_current_path(edit_post_path(@post1))
     end
   end
 end
