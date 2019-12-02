@@ -20,7 +20,7 @@ RSpec.describe 'Interface Posts', type: :feature do
 
     scenario 'Creating a post succesfully!' do
       expect do
-        fill_in 'Content', with: 'This is the content of the post!'
+        fill_in 'post_content', with: 'This is the content of the post!'
         click_button 'Publish'
         expect(page).to have_content 'Post created successfully.'
         expect(page).to have_content 'This is the content of the post!'
