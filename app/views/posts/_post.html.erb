@@ -12,4 +12,13 @@
                                        data: { confirm: "You sure?" } %>
     <% end %>
   </span>
+  <ul>
+    <%= render post.comments %>
+
+  </ul>
+  <div>
+    <%= form_for(@comment, url: comments_path) do |form| %>
+    <%= render partial: 'comments/comment_form', locals: { f: form, post: post } %>
+    <% end %>
+  </div>
 </li>
