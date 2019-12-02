@@ -1,0 +1,11 @@
+<div class="form-row p-3">
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="col-7 mx-auto field">
+    <%= f.text_area :content, autofocus: true, placeholder: "What are you thinking?", required: true, class: "form-control" %>
+  </div>
+
+  <div class="col-7 mx-auto p-2 actions">
+    <%= f.submit "Publish", class: "btn btn-primary" %>
+  </div>
+</div>

@@ -10,9 +10,13 @@ gem 'rails', '~> 5.2.3'
 # Digest hash
 gem 'bcrypt', '3.1.12'
 # Faker populates databases
-gem 'faker', '1.7.3'
+gem 'faker', git: 'https://github.com/stympy/faker'
 # To create pages for multiple records
 gem 'will_paginate', '3.1.7'
+# Bootstrap
+gem 'bootstrap', '~> 4.3.1'
+gem 'font-awesome-rails'
+gem 'jquery-rails'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
@@ -53,15 +57,17 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 3.0.0'
 
   # Capybara, the library that allows us to interact with the browser using Ruby
   gem 'capybara'
 
   # The following two gems aid with the nuts and bolts
   # of interacting with the browser.
-  gem 'chromedriver-helper'
   gem 'selenium-webdriver'
+  gem 'webdrivers', '~> 4.0'
 end
 
 group :development do
