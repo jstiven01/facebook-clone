@@ -4,3 +4,8 @@
 <li>
 <span><%= comment.content %></span>
 </li>
+<% if current_user == comment.user %>
+<li>
+<%= link_to "Delete Comment", comment, method: :delete, data: { confirm: "You sure?" } %>
+</li>
+<% end %>

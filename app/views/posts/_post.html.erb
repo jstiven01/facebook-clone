@@ -8,13 +8,12 @@
   <span class="links-post-options">
       <% if current_user == post.user && current_page?(user_path(current_user)) %>
       <%= link_to "Edit Post ", edit_post_path(post) %> 
-      <%= link_to "Delete", post, method: :delete,
+      <%= link_to "Delete Post", post, method: :delete,
                                        data: { confirm: "You sure?" } %>
     <% end %>
   </span>
   <ul>
     <%= render post.comments %>
-
   </ul>
   <div>
     <%= form_for(@comment, url: comments_path) do |form| %>
