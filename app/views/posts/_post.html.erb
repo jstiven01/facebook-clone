@@ -8,7 +8,7 @@
   </div>
   <div class="card-body">
   <span class="content"><%= post.content %></span>
-  <p><%= post.reactions.length %> likes</p>
+  <p><%= pluralize(post.reactions.length, 'like') %></p>
   </div>
       <% if current_user == post.user && current_page?(user_path(current_user)) %>
       <span class="card-footer links-post-options">
@@ -22,7 +22,7 @@
 
   <div class="card-footer">
     <% if !current_user.reaction_to_post(post.id).nil? %>
-       <%= link_to "Unlike", current_user.reaction_to_post(post.id) , method: :delete %>
+       <button class="btn btn-primary"><%= link_to "Unlike", current_user.reaction_to_post(post.id) , method: :delete %></button>
     <% else %>
       <%= form_for(@reaction, url: reactions_path) do |form| %>
       <%= render partial: 'reactions/reaction_form', locals: { f: form, post: post } %>
