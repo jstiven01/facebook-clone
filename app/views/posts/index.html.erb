@@ -2,7 +2,7 @@
 <%= form_for(@post, url: posts_path) do |form| %>
 <%= render partial: 'post_form', locals: { f: form } %>
 <% end %>
-<div class="row">
+<div class="row m-0">
 <ul class="col-12 posts">
   <%= render @posts %>
 </ul>

@@ -1,21 +1,26 @@
-<li id="post-<%= post.id %>">
-  <%= link_to gravatar_for(post.user, size: 50), post.user %>
-  <span class="user"><%= link_to post.user.full_name, post.user %></span>
+<li class="card border-secondary text-secondary mb-3" id="post-<%= post.id %>">
+ <div class="card-header">
+    <%= link_to gravatar_for(post.user, size: 50), post.user %>
+    <span class="user"><%= link_to post.user.full_name, post.user %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(post.date_post) %> ago.
+    </span>
+  </div>
+  <div class="card-body">
   <span class="content"><%= post.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(post.date_post) %> ago.
-  </span>
-  <span class="links-post-options">
+  <p><%= post.reactions.length %> likes</p>
+  </div>
       <% if current_user == post.user && current_page?(user_path(current_user)) %>
+      <span class="card-footer links-post-options">
       <%= link_to "Edit Post ", edit_post_path(post) %> 
       <%= link_to "Delete Post", post, method: :delete,
                                        data: { confirm: "You sure?" } %>
+      </span>
     <% end %>
-  </span>
-    <p><%= post.reactions.length %> likes</p>
+
   <% if current_user == post.user && current_page?(root_path) %>
 
-  <div>
+  <div class="card-footer">
     <% if !current_user.reaction_to_post(post.id).nil? %>
        <%= link_to "Unlike", current_user.reaction_to_post(post.id) , method: :delete %>
     <% else %>
@@ -25,10 +30,10 @@
     <% end %>
   </div>
 
-  <ul>
+  <ul class="card-body">
     <%= render post.comments %>
   </ul>
-  <div>
+  <div class="card-body">
     <%= form_for(@comment, url: comments_path) do |form| %>
     <%= render partial: 'comments/comment_form', locals: { f: form, post: post } %>
     <% end %>
