@@ -12,6 +12,19 @@
                                        data: { confirm: "You sure?" } %>
     <% end %>
   </span>
+    <p><%= post.reactions.length %> likes</p>
+  <% if current_user == post.user && current_page?(root_path) %>
+
+  <div>
+    <% if !current_user.reaction_to_post(post.id).nil? %>
+       <%= link_to "Unlike", current_user.reaction_to_post(post.id) , method: :delete %>
+    <% else %>
+      <%= form_for(@reaction, url: reactions_path) do |form| %>
+      <%= render partial: 'reactions/reaction_form', locals: { f: form, post: post } %>
+      <% end %>
+    <% end %>
+  </div>
+
   <ul>
     <%= render post.comments %>
   </ul>
@@ -21,3 +34,4 @@
     <% end %>
   </div>
 </li>
+<% end %>

@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @posts = current_user.feed
     @comment = Comment.new
+    @reaction = Reaction.new
   end
 
   def create

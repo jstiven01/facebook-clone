@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def reaction_to_post(post_id)
+    Reaction.find_by(user_id: id, post_id: post_id)
+  end
 end
