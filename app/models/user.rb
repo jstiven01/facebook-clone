@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def feed
-    Post.where(user_id: self)
+    Post.where(user: (friends + [self]))
   end
 
   def full_name

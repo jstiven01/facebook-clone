@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     @users = @users.reject { |user| current_user.friends.include?(user) }
     # Do not show the pending friends
     @users = @users.reject { |user| current_user.pending_friends.include?(user) }
+    # Do not show the friends _request
+    @users = @users.reject { |user| current_user.friend_requests.include?(user) }
     @friendship = Friendship.new
   end
 

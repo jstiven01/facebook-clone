@@ -25,7 +25,16 @@ class FriendshipsController < ApplicationController
     redirect_to friendships_path
   end
 
-  def update; end
+  def update
+    @friendship = Friendship.find(params[:id])
+    @friendship.confirmed = true
+    if @friendship.save
+      flash[:success] = 'Friendship accepted'
+    else
+      flash[:warning] = 'Failed to accept Friendship'
+    end
+    redirect_to friendships_path
+  end
 
   private
 
