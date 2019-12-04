@@ -10,6 +10,12 @@
                 <%= link_to "My Profile", user_path(current_user) %>
               </li>
               <li>
+                <%= link_to "Make new Friends", users_path %>
+              </li>
+              <li>
+                <%= link_to "My Friends", friendships_path %>
+              </li>
+              <li>
                 <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
               </li>
         <% end %>

@@ -1,0 +1,20 @@
+  <div class="col-12 d-flex profile">
+    <div class="profile-image">
+      <%= gravatar_for user, size:40 %>
+    </div>
+    <div class="personal-info">
+      <p><%= user.first_name%></p>
+      <p><%= user.last_name%></p>
+      <p><%= user.email%></p>
+    </div>
+    <div>
+        <% if current_page?(users_path) %>
+            <%= form_for(@friendship, url: friendships_path) do |form| %>
+            <%= render partial: 'friendships/friendship_form', locals: { f: form,  friend: user } %>
+            <% end %>
+        <% else %>
+            <%= link_to "Delete", current_user.friendships.filter{|friendship| friendship.friend_id == user.id}, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+        <% end %>
+    </div>
+  </div>
