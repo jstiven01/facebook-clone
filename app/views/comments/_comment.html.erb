@@ -5,8 +5,4 @@
 <li>
 <span class="comment-user"><%= comment.content %></span>
 </li>
-<% if current_user == comment.user %>
-<li class="link-delete-comment py-2">
-<%= link_to "Delete Comment", comment, method: :delete, data: { confirm: "You sure?" } %>
-</li>
-<% end %>
+<%= delete_comment_button(comment) %>

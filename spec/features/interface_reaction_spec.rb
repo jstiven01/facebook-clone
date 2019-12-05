@@ -19,14 +19,14 @@ RSpec.describe 'Interface Reactions (Likes)', type: :feature do
 
     scenario 'Creating a reaction (Like it) succesfully!' do
       expect do
-        click_button 'I like it'
+        click_link 'I like it'
         expect(page).to have_content '1 like'
       end.to change(user.reactions, :count).by(1)
     end
 
     scenario 'Deleting a reaction (Unlike) succesfully!' do
       expect do
-        click_button 'I like it'
+        click_link 'I like it'
         expect(page).to have_content '1 like'
       end.to change(user.reactions, :count).by(1)
 

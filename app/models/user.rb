@@ -12,7 +12,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def feed
-    Post.where(user_id: self)
+    Post.where(user: User.all)
   end
 
   def full_name

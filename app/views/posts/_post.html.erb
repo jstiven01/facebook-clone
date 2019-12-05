@@ -1,5 +1,5 @@
 <li class="card border-secondary text-secondary mb-3" id="post-<%= post.id %>">
- <div class="card-header">
+  <div class="card-header">
     <%= link_to gravatar_for(post.user, size: 50), post.user %>
     <span class="user"><%= link_to post.user.full_name, post.user %></span>
     <span class="timestamp">
@@ -7,40 +7,23 @@
     </span>
   </div>
   <div class="card-body">
-  <span class="content"><%= post.content %></span>
+    <span class="content"><%= post.content %></span>
   </div>
-      <% if current_user == post.user && current_page?(user_path(current_user)) %>
-      <span class="card-footer links-post-options">
-      <%= link_to "Edit Post ", edit_post_path(post) %> 
-      <%= link_to "Delete Post", post, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-      </span>
-    <% end %>
+  <%= edit_delete_links_post(post) %>
+  <%= likes_total_comments(post) %>
 
-  <% if current_user == post.user && current_page?(root_path) %>
+  <% if current_page?(root_path) %>
 
-  <div class="card-footer d-flex justify-content-between">
-    <div class="d-flex like-unlike-button">
-      <% if !current_user.reaction_to_post(post.id).nil? %>
-        <button class="btn btn-primary like-unlike-btn"><%= link_to "Unlike", current_user.reaction_to_post(post.id) , method: :delete %></button>
-      <% else %>
-        <%= form_for(@reaction, url: reactions_path) do |form| %>
-        <%= render partial: 'reactions/reaction_form', locals: { f: form, post: post } %>
-        <% end %>
-      <% end %>
-      <div class="count-likes pl-2"><%= pluralize(post.reactions.length, 'like') %></div>
-     </div>
-     <button class="btn btn-link count-comments" data-toggle="collapse" data-target="#collapse<%= post.id %>" aria-expanded="false" aria-controls="collapse<%= post.id %>"><%= pluralize(post.comments.length, 'comment') %></button>
-  </div>
   <div id="collapse<%= post.id %>" class="collapse"  aria-labelledby="headingOne">
-  <ul class="card-body">
-    <%= render post.comments %>
-  </ul>
+    <ul class="card-body">
+      <%= render post.comments %>
+    </ul>
   </div>
   <div class="card-body">
     <%= form_for(@comment, url: comments_path) do |form| %>
     <%= render partial: 'comments/comment_form', locals: { f: form, post: post } %>
     <% end %>
   </div>
-</li>
 <% end %>
+</li>
+
