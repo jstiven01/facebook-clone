@@ -48,7 +48,7 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
-  
+
   def reaction_to_post(post_id)
     Reaction.find_by(user_id: id, post_id: post_id)
   end

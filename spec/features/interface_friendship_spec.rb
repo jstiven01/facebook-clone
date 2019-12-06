@@ -16,7 +16,7 @@ RSpec.describe 'Interface Friendship', type: :feature do
 
     scenario 'Creating a Friend Request (Add Friend)' do
       visit root_path
-      click_link 'Make new Friends'
+      click_link 'New Friends'
       expect(page).to have_content friend.first_name
       expect do
         click_button 'Add Friend'
