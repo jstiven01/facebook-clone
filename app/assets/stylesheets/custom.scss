@@ -17,6 +17,11 @@ ul {
     margin: 0;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 section {
   overflow: auto;
 }
@@ -51,4 +56,38 @@ textarea {
     a {
         color:blue;
     }
+}
+
+.card {
+  width: 30rem;
+  margin: 2px auto;
+}
+
+.like-unlike-btn {
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.link-delete-comment {
+  font-size: 13px;
+}
+
+.timestamp {
+  font-size: 12px;
+}
+
+.comment-user {
+  font-size: 14px;
+}
+
+.main-content {
+  background-color: #f8f9fa;
+}
+
+.alert {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
 }

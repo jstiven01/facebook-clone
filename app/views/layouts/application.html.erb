@@ -10,10 +10,13 @@
     <%= render 'layouts/shim' %>
   </head>
   <body>
-    <div class="container">
+    <div class="container p-0">
       <%= render 'layouts/header' %>
+    </div>
+    <div class="container p-0 border border-light border-top-0 main-content">
       <%= render 'layouts/messages' %>
       <%= yield %>
     </div>
+
   </body>
 </html>

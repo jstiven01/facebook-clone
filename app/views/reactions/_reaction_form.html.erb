@@ -1,0 +1,9 @@
+<div class="form-row">
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.hidden_field :post_id, value: post.id %>
+
+  <div class="col-7 actions">
+    <%= f.submit "I like it", class: "btn btn-primary" %>
+  </div>
+</div>

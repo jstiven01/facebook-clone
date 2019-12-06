@@ -4,6 +4,8 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :reactions, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -45,5 +47,9 @@ class User < ApplicationRecord
 
   def friend?(user)
     friends.include?(user)
+  end
+  
+  def reaction_to_post(post_id)
+    Reaction.find_by(user_id: id, post_id: post_id)
   end
 end
