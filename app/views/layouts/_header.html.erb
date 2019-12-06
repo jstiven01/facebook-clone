@@ -1,6 +1,6 @@
 <header class="navbar navbar-dark bg-primary">
 <div class="container-fluid">
-  <div class="row d-flex justify-content-between">
+  <div class="row m-0 d-flex justify-content-between">
     <div class="col-5">
       <%= link_to "Facebook clone", root_path , class: "navbar-brand", id: "logo" %>
     </div>
@@ -9,7 +9,7 @@
               <li>
                 <%= link_to "My Profile", user_path(current_user) %>
               </li>
-              <li>
+              <li class="pr-0">
                 <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
               </li>
         <% end %>

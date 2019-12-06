@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     @posts = current_user.feed
+    @comment = Comment.new
   end
 
   def create
@@ -25,8 +26,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    # @post.content = posts_params[:content]
-    # @post.date_post = Time.zone.now
     if @post.update(content: posts_params[:content], date_post: Time.zone.now)
       flash[:success] = 'Post was successfully updated.'
       redirect_to current_user

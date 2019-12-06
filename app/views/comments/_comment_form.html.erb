@@ -1,0 +1,13 @@
+<div class="form-row">
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="col-9 field">
+    <%= f.text_area :content, autofocus: true, placeholder: "Comment this post", required: true, class: "form-control" %>
+  </div>
+  
+  <%= f.hidden_field :post_id, value: post.id %>
+
+  <div class="col-3 actions">
+    <%= f.submit "Comment", class: "btn btn-primary" %>
+  </div>
+</div>
