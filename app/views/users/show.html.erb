@@ -12,4 +12,8 @@
   <ul class="col-12 posts">
     <%= render @posts %>
   </ul>
+  <h3> My Friends</h3>
+  <div>
+    <%= render @user.friends.sample(9) %>
+  </div>
 </div>

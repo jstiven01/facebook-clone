@@ -11,18 +11,12 @@
             <%= render partial: 'friendships/friendship_form', locals: { f: form,  friend: user } %>
             <% end %>
         <% else %>
-            <% friendship_requested = current_user.friendships.filter{|friendship| friendship.friend_id == user.id} %>
-            <% if friendship_requested.empty? %>
-                <% friendship_requested = user.friendships.filter{|friendship| friendship.friend_id == current_user.id} %>
-                <% if !current_user.friend?(user) %>
-                    <%= form_for(friendship_requested , url: friendship_path(friendship_requested )) do |form| %>
-                        <%= render partial: 'friendships/friendship_form', locals: { f: form,  friend: user } %>
-                    <% end %>
+            <% if !current_user.friend?(user) %>
+                <%= form_for(friendship_requested(user) , url: friendship_path(friendship_requested(user) )) do |form| %>
+                    <%= render partial: 'friendships/friendship_form', locals: { f: form,  friend: user } %>
                 <% end %>
             <% end %>
-
-            <%= link_to "Delete", friendship_requested , method: :delete,
-                                       data: { confirm: "You sure?" } %>
+            <%= delete_friend_link(user) %>
         <% end %>
     </div>
   </div>
