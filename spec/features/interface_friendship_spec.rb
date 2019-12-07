@@ -79,5 +79,25 @@ RSpec.describe 'Interface Friendship', type: :feature do
         click_link 'Delete'
       end.to change(friend.friendships, :count).by(-1)
     end
+
+    scenario 'Accepting friendship checking a new row in Friendship table ' do
+      friendship2.save
+      visit friendships_path
+      expect(page).to have_content friend.first_name
+      expect do
+        click_button 'Add Friend'
+      end.to change(Friendship, :count).by(1)
+    end
+
+    scenario 'Deleting Friend checking that two rows in Friendship table were deleted' do
+      friendship2.save
+      visit friendships_path
+      expect(page).to have_content friend.first_name
+      click_button 'Add Friend'
+      expect(page).to have_content 'Friendship accepted'
+      expect do
+        click_link 'Delete'
+      end.to change(Friendship, :count).by(-2)
+    end
   end
 end

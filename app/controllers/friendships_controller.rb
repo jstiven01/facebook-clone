@@ -20,15 +20,14 @@ class FriendshipsController < ApplicationController
 
   def destroy
     @friendship = Friendship.find(params[:id])
-    @friendship.delete
+    @friendship.destroy_friendship
     flash[:success] = 'Friendship deleted successfully'
     redirect_to friendships_path
   end
 
   def update
     @friendship = Friendship.find(params[:id])
-    @friendship.confirmed = true
-    if @friendship.save
+    if @friendship.confirm_friendship
       flash[:success] = 'Friendship accepted'
     else
       flash[:warning] = 'Failed to accept Friendship'
