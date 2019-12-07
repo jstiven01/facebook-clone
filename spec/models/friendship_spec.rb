@@ -18,12 +18,25 @@ RSpec.describe Friendship, type: :model do
       friendship.valid?
       expect(friendship.errors[:friend]).to include('must exist')
     end
+
+    let(:friendship1) { FactoryBot.build(:friendship, user_id: user_1.id, friend_id: user_2.id) }
+    let(:friendship2) { FactoryBot.build(:friendship, user_id: user_1.id, friend_id: user_2.id) }
+    it 'is invalid the same friendship twice' do
+      friendship1.save
+      expect(friendship2.valid?).to eq(false)
+    end
+
+    let(:friendship3) { FactoryBot.build(:friendship, user_id: user_1.id, friend_id: user_2.id) }
+    let(:friendship4) { FactoryBot.build(:friendship, user_id: user_2.id, friend_id: user_1.id) }
+    it 'is valid the friendships with 2 rows' do
+      friendship3.save
+      friendship4.save
+      expect(friendship4.valid?).to eq(true)
+    end
   end
 
   describe 'associations post tests' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:friend) }
-    # it { is_expected.to have_many(:comments) }
-    # it { is_expected.to have_many(:likes) }
   end
 end
