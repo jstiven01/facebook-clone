@@ -1,0 +1,24 @@
+<div class="card mt-4">
+<!-- Nav tabs -->
+<ul class="nav nav-pills nav-fill" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#home" role="tab"><h6>My Friends</h6></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#profile" role="tab"><h6>Pending Friends</h6></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#messages" role="tab"><h6>Friends Request</h6></a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home" role="tabpanel"><%= render @friends %></div>
+  <div class="tab-pane" id="profile" role="tabpanel"><%= render @pending_friends %></div>
+  <div class="tab-pane" id="messages" role="tabpanel"><%= render @friends_requests %></div>
+</div>
+</div>
+
+
+    

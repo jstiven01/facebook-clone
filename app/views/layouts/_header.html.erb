@@ -1,14 +1,21 @@
 <header class="navbar navbar-dark bg-primary">
 <div class="container-fluid">
   <div class="row m-0 d-flex justify-content-between">
-    <div class="col-5">
+    <div class="col-4">
       <%= link_to "Facebook clone", root_path , class: "navbar-brand", id: "logo" %>
     </div>
-      <ul class="col-5 d-flex justify-content-end align-items-center main-links">
+      <ul class="col-8 d-flex justify-content-end align-items-center main-links">
           <% if user_signed_in? %>
               <li>
                 <%= link_to "My Profile", user_path(current_user) %>
               </li>
+              <li>
+                <%= link_to "New Friends", users_path %>
+              </li>
+              <li>
+                <%= link_to "My Friends", friendships_path %>
+              </li>
+              <%= notif_friend_requests %>
               <li class="pr-0">
                 <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
               </li>

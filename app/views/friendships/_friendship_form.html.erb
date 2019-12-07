@@ -1,0 +1,9 @@
+<div class="form-row">
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.hidden_field :friend_id, value: friend.id %>
+
+  <div class="col-7 actions">
+    <%= f.submit "Add Friend", class: "btn btn-primary" %>
+  </div>
+</div>
