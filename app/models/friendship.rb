@@ -5,7 +5,7 @@ class Friendship < ApplicationRecord
   belongs_to :friend, class_name: 'User'
 
   validates :user_id, presence: true, uniqueness: { scope: :friend_id }
-  validates :friend_id, presence: true
+  validate :friend_cannot_be_user
 
   def confirm_friendship
     return if confirmed
@@ -20,5 +20,11 @@ class Friendship < ApplicationRecord
                        friend.id, user.id).each(&:destroy)
     end
     destroy
+  end
+
+  private
+
+  def friend_cannot_be_user
+    errors.add(:invalid_friendship, "can't be friend with same user") if user_id == friend_id
   end
 end

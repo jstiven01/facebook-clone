@@ -3,9 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
-  context 'validation tests' do
+  describe 'validation tests' do
     let!(:user_1) { FactoryBot.create(:user) }
     let!(:user_2) { FactoryBot.create(:user) }
+    let!(:user_3) { FactoryBot.create(:user) }
+    let!(:user_4) { FactoryBot.create(:user) }
     let(:valid_friendship) { FactoryBot.create(:friendship) }
     let(:friendship) { FactoryBot.build(:friendship, user_id: nil, friend_id: nil) }
 
@@ -26,12 +28,18 @@ RSpec.describe Friendship, type: :model do
       expect(friendship2.valid?).to eq(false)
     end
 
-    let(:friendship3) { FactoryBot.build(:friendship, user_id: user_1.id, friend_id: user_2.id) }
-    let(:friendship4) { FactoryBot.build(:friendship, user_id: user_2.id, friend_id: user_1.id) }
+    let(:friendship3) { FactoryBot.build(:friendship, user_id: user_3.id, friend_id: user_4.id) }
+    let(:friendship4) { FactoryBot.build(:friendship, user_id: user_4.id, friend_id: user_3.id) }
     it 'is valid the friendships with 2 rows' do
       friendship3.save
       friendship4.save
       expect(friendship4.valid?).to eq(true)
+    end
+
+    let(:friendship) { FactoryBot.build(:friendship, user_id: 1, friend_id: 1) }
+    it 'is invalid with same user and friend' do
+      friendship.valid?
+      expect(friendship.errors[:invalid_friendship]).to include("can't be friend with same user")
     end
   end
 
