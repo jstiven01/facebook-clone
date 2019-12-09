@@ -18,7 +18,7 @@ Then you should use the next Facebook ID because this project uses figaro in ord
 
 ```
 $  FACEBOOK_APP_ID: "1353273284853558"
-``
+```
 Next, migrate the database:
 
 ```
