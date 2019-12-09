@@ -14,7 +14,11 @@ To get started with the app, clone the repo and then install the needed gems:
 ```
 $ bundle install --without production
 ```
+Then you should use the next Facebook ID because this project uses figaro in order to hide those keys.
 
+```
+$  FACEBOOK_APP_ID: "1353273284853558"
+``
 Next, migrate the database:
 
 ```
