@@ -1,6 +1,9 @@
 # Project: Building Facebook
 This project is about building a large portion of the core Facebook user functionality. You can check the complete description [here](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project#project-building-facebook)
 
+## Live Demo:
+Check a live version on Heroku. [here](https://intense-reaches-58174.herokuapp.com/)
+
 ## Built With:
 ruby 2.6.3, rails 5.2.3
 
@@ -14,11 +17,7 @@ To get started with the app, clone the repo and then install the needed gems:
 ```
 $ bundle install --without production
 ```
-Then you should use the next Facebook ID because this project uses figaro in order to hide those keys.
 
-```
-$  FACEBOOK_APP_ID: "1353273284853558"
-```
 Next, migrate the database:
 
 ```
