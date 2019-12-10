@@ -68,6 +68,7 @@ RSpec.configure do |config|
   # Use Devise test helpers in controller specs
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :feature
+  config.include(OmniauthMacros)
 end
 
 Shoulda::Matchers.configure do |config|
@@ -76,3 +77,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+OmniAuth.config.test_mode = true

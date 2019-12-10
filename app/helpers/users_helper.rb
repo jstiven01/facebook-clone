@@ -2,9 +2,18 @@
 
 module UsersHelper
   def gravatar_for(user, size: 80)
-    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
-    image_tag(gravatar_url, alt: user.full_name, class: 'gravatar')
+    if user.profile_image
+      profile_url = if size >= 200
+                      user.profile_image + '?type=large'
+                    else
+                      user.profile_image + '?type=small'
+                    end
+    else
+      gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+      profile_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+    end
+
+    image_tag(profile_url, alt: user.full_name, class: 'gravatar')
   end
 
   def friendship_requested(user)
