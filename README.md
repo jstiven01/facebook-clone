@@ -1,14 +1,15 @@
 # Project: Building Facebook
 This project is about building a large portion of the core Facebook user functionality. You can check the complete description [here](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project#project-building-facebook)
 
+## Screenshot
+<img src="./docs/screenshot.png" width="800" height="350">
+
 ## Live Demo:
 Check a live version on Heroku. [here](https://intense-reaches-58174.herokuapp.com/)
 
 ## Built With:
 ruby 2.6.3, rails 5.2.3
 
-## Author
-Johan Tinjaca https://github.com/jstiven01
 
 ## Getting started
 
@@ -35,3 +36,13 @@ If the test suite passes, you'll be ready to run the app in a local server:
 ```
 $ rails server
 ```
+
+## Author
+
+👤 **Johan Stiven Tinjacá Tocora**
+
+- Github: [@jstiven01](https://github.com/jstiven01)
+- Email: [stiven10@gmail.com](mailto:stiven10@gmail.com)
+- Twitter: [@TinjacaJohan](https://twitter.com/TinjacaJohan)
+- Linkedin: [Johan Tinjacá](https://www.linkedin.com/in/johanstiventinjaca/)
+
