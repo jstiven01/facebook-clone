@@ -43,7 +43,6 @@ $ rails server
 Go to localhost in your favorite browser
 ```
 http://localhost:3000/
-
 ```
 
 ## Upcoming Features
