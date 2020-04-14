@@ -29,4 +29,8 @@ module UsersHelper
 
     link_to 'Delete', friendship_requested(user), method: :delete, data: { confirm: 'You sure?' }
   end
+
+  def current_user_friendships
+    UserFriendship.new(current_user)
+  end
 end

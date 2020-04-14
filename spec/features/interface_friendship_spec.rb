@@ -30,8 +30,9 @@ RSpec.describe 'Interface Friendship', type: :feature do
     scenario 'Checking Pending friends' do
       friendship.save
       visit friendships_path
+      user_friendship = UserFriendship.new(user)
       expect(page).to have_content friend.first_name
-      expect(user.pending_friends.include?(friend)).to eq(true)
+      expect(user_friendship.pending_friends.include?(friend)).to eq(true)
     end
 
     scenario 'Deleting Pending friends' do
@@ -47,8 +48,9 @@ RSpec.describe 'Interface Friendship', type: :feature do
     scenario 'Checking people who requested to be friends' do
       friendship2.save
       visit friendships_path
+      user_friendship = UserFriendship.new(user)
       expect(page).to have_content friend.first_name
-      expect(user.friend_requests.include?(friend)).to eq(true)
+      expect(user_friendship.friend_requests.include?(friend)).to eq(true)
     end
 
     scenario 'Deleting people who requested to be friends' do
@@ -65,8 +67,9 @@ RSpec.describe 'Interface Friendship', type: :feature do
       visit friendships_path
       expect(page).to have_content friend.first_name
       click_button 'Add Friend'
+      user_friendship = UserFriendship.new(friend)
       expect(page).to have_content 'Friendship accepted'
-      expect(friend.friends.include?(user)).to eq(true)
+      expect(user_friendship.friends.include?(user)).to eq(true)
     end
 
     scenario 'Deleting Friend' do

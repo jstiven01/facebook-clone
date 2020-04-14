@@ -14,7 +14,7 @@
       <div class="friends-profile mt-2">
         <h5><%= link_to "My Friends", friendships_path %></h5>
         <div>
-          <%= render @user.friends.sample(9) %>
+          <%= render @user_friendship.friends.sample(9) %>
         </div>
       </div>
     <% end %>

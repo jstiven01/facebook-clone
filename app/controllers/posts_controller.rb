@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   def index
     @post = Post.new
-    @posts = current_user.feed
+    user_friendships = UserFriendship.new(current_user)
+    @posts = user_friendships.feed
     @comment = Comment.new
   end
 
