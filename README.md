@@ -37,6 +37,25 @@ If the test suite passes, you'll be ready to run the app in a local server:
 $ rails server
 ```
 
+
+## Usage
+
+Go to localhost in your favorite browser
+```
+http://localhost:3000/
+```
+
+## Automated Tests
+Get in to the folder app and run
+
+```
+rspec
+```
+
+## Upcoming Features
+
+To see the upcoming features check the [issues page](https://github.com/jstiven01/facebook-clone/issues)
+
 ## Author
 
 👤 **Johan Stiven Tinjacá Tocora**
