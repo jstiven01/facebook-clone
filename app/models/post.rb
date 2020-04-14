@@ -7,4 +7,5 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :reactions, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
+  scope :recent, -> { where('date_post > ?', 2.days.ago)}
 end
